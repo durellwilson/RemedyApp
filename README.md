@@ -1,4 +1,3 @@
-```markdown
 # HerbaList
 
 HerbaList is a final project developed during the Grand Circus Full Stack JavaScript Bootcamp (January 2025), designed to help users discover and share traditional herbal remedies. Built with the MERN stack, this application demonstrates proficiency in modern web development practices while providing a practical solution for accessing herbal remedy information.
