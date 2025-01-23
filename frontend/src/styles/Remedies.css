@@ -1,0 +1,59 @@
+.remedies-container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .remedies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+  }
+  
+  .remedy-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .remedy-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .remedy-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+  }
+  
+  .remedy-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .remedy-content {
+    padding: 15px;
+  }
+  
+  .remedy-content h3 {
+    margin: 0 0 10px 0;
+    color: #333;
+  }
+  
+  .ailment {
+    color: #666;
+    margin-bottom: 10px;
+  }
+  
+  .ratings {
+    display: flex;
+    justify-content: space-between;
+    color: #888;
+    font-size: 0.9em;
+  }
+  

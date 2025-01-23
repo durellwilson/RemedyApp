@@ -1,0 +1,123 @@
+.filter-sort-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px;
+    background: #f5f5f5;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .filters-section {
+    display: flex;
+    gap: 20px;
+    flex: 2;
+  }
+  
+  .filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex: 1;
+  }
+  
+  .sort-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex: 1;
+    border-left: 2px solid #ddd;
+    padding-left: 20px;
+  }
+  
+  .filter-group label,
+  .sort-group label {
+    font-weight: 500;
+    color: #333;
+  }
+  
+  .filter-group select,
+  .sort-group select {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: white;
+    cursor: pointer;
+  }
+  
+  .sort-select {
+    background-color: #4CAF50 !important;
+    color: white;
+    border: none !important;
+  }
+  
+  .sort-select:hover {
+    background-color: #45a049 !important;
+  }
+  
+  .filter-group select:hover {
+    border-color: #4CAF50;
+  }
+
+  .filter-buttons {
+    display: flex;
+    gap: 10px;
+    align-self: flex-end;
+    margin-top: 20px;
+  }
+  
+  .apply-button,
+  .reset-button {
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+  
+  .apply-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+  }
+  
+  .apply-button:hover {
+    background-color: #45a049;
+  }
+  
+  .reset-button {
+    background-color: #f5f5f5;
+    color: #666;
+    border: 1px solid #ddd;
+  }
+  
+  .reset-button:hover {
+    background-color: #e0e0e0;
+    border-color: #999;
+  }
+  
+  @media (max-width: 768px) {
+    .filter-sort-container {
+      flex-direction: column;
+    }
+    
+    .filters-section {
+      flex-direction: column;
+    }
+  
+    .sort-group {
+      border-left: none;
+      border-top: 2px solid #ddd;
+      padding-left: 0;
+      padding-top: 20px;
+    }
+
+    .filter-buttons {
+        align-self: stretch;
+      }
+    
+      .apply-button,
+      .reset-button {
+        flex: 1;
+      }
+  }
