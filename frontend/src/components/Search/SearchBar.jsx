@@ -19,12 +19,20 @@ const SearchBar = ({ onSearch, data }) => {
     
     setFilteredSuggestions(filtered);
     setShowSuggestions(true);
+    onSearch(userInput); // Pass the search term up to parent component
   };
 
   const handleSuggestionClick = (suggestion) => {
     setInputValue(suggestion.name);
     setShowSuggestions(false);
     onSearch(suggestion.name);
+  };
+
+  const handleClear = () => {
+    setInputValue('');
+    setShowSuggestions(false);
+    setFilteredSuggestions([]);
+    onSearch(''); // Reset search in parent component
   };
 
   return (
@@ -36,6 +44,11 @@ const SearchBar = ({ onSearch, data }) => {
         placeholder="Search remedies..."
         className="search-input"
       />
+      {inputValue && (
+        <button onClick={handleClear} className="clear-button">
+          ✕
+        </button>
+      )}
       {showSuggestions && inputValue && (
         <ul className="suggestions-list">
           {filteredSuggestions.map((suggestion) => (
