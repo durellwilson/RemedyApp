@@ -1,67 +1,15 @@
-# HerbaList - Natural Remedy Directory
+# HerbaList
 
-A modern web application for discovering and sharing traditional remedies, built with React and Vite. HerbaList allows users to explore, share, and manage natural remedies with effectiveness ratings and budget considerations.
+HerbaList is a final project developed during the Grand Circus Full Stack JavaScript Bootcamp (January-February 2025), designed to help users discover and share traditional herbal remedies. Built with the MERN stack, this application demonstrates proficiency in modern web development practices while providing a practical solution for accessing herbal remedy information.
 
-## 🌟 Features
+## Features
 
-- 🌿 Browse natural remedies
-- 🔍 Advanced search and filtering capabilities
-- ⭐ Rate remedies by effectiveness (1-5 stars)
-- 💰 Budget indicators ($, $$, $$$)
-- 📝 Detailed remedy information including ingredients and instructions
-- 📱 Responsive design for all devices
-
-## 🚀 Quick Start
-
-### Prerequisites
-
-- Node.js (v16 or higher)
-- npm (comes with Node.js)
-- MongoDB (for backend)
-
-### Installation
-
-1. Clone the repository
-bash
-git clone https://github.com/durellwilson/RemedyApp.git
-cd RemedyApp
-
-2. Install dependencies
-bash
-Frontend dependencies
-cd frontend
-npm install
-
-3. Set up environment variables
-Create a `.env` file in the frontend directory:
-env
-VITE_API_URL=http://localhost:3000/api
-
-4. Start the development server
-bash
-npm run dev
-
-The application will be available at `http://localhost:5173`
-
-## 🏗️ Project Structure
-
-frontend/
-├── src/
-│ ├── components/
-│ │ ├── Navbar/
-│ │ └── Remedies/
-│ ├── pages/
-│ │ ├── Home.jsx
-│ │ └── Remedies.jsx
-│ ├── services/
-│ │ └── api.js
-│ ├── styles/
-│ │ ├── common.css
-│ │ └── index.css
-│ ├── App.jsx
-│ └── main.jsx
-├── index.html
-└── package.json
+- 🌿 Browse traditional home remedies
+- 🔍 Real-time search functionality
+- ⭐ Filter by effectiveness rating
+- 💰 Filter by budget level
+- 🔄 Advanced sorting options
+- 📱 Responsive design
 
 ## 🛠️ Available Scripts
 
@@ -92,7 +40,80 @@ frontend/
 - Edge (latest)
 - Modern mobile browsers
 
-## 🤝 Contributing
+## Installation
+
+1. Clone the repository
+```
+git clone https://github.com/durellwilson/RemedyApp.git
+cd RemedyApp
+```
+
+2. Install dependencies
+```
+# Backend dependencies
+cd backend
+npm install
+
+# Frontend dependencies
+cd ../frontend
+npm install
+```
+
+3. Configure environment variables
+
+Create `.env` in backend directory:
+```
+PORT=3000
+MONGODB_URI=your_mongodb_connection_string
+FIREBASE_PROJECT_ID=your_firebase_project_id
+FIREBASE_PRIVATE_KEY=your_private_key
+FIREBASE_CLIENT_EMAIL=your_client_email
+```
+
+Create `.env` in frontend directory:
+```
+VITE_API_URL=http://localhost:3000/api
+VITE_FIREBASE_API_KEY=your_api_key
+VITE_FIREBASE_AUTH_DOMAIN=your_auth_domain
+VITE_FIREBASE_PROJECT_ID=your_project_id
+VITE_FIREBASE_STORAGE_BUCKET=your_storage_bucket
+VITE_FIREBASE_MESSAGING_SENDER_ID=your_messaging_sender_id
+VITE_FIREBASE_APP_ID=your_app_id
+```
+
+4. Start development servers
+```
+# Start backend
+cd backend
+npm run dev
+
+# Start frontend (new terminal)
+cd frontend
+npm start
+```
+
+## 🏗️ Project Structure
+```
+RemedyApp/
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── services/
+│   │   ├── styles/
+│   │   └── utils/
+│   └── package.json
+├── backend/
+│   ├── config/
+│   ├── controllers/
+│   ├── middleware/
+│   ├── models/
+│   ├── routes/
+│   └── server.js
+└── README.md
+```
+
+## Contributing
 
 1. Fork the repository
 2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
@@ -100,36 +121,29 @@ frontend/
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## 📝 Development Notes
+## Future Enhancements
 
-- Built with Vite for optimal development experience
-- Modular CSS organization
-- Centralized API service
-- Component-based architecture
-- Responsive design principles
+- User authentication
+- Personal remedy collections
+- Community ratings and reviews
+- Social sharing features
+- Mobile application
 
-## 📄 License
+## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 👥 Team
+## Acknowledgments
 
-- Durell Wilson - Lead Developer
-- Contact: durellwilsondetroit@gmail.com
-- Project Link: https://github.com/durellwilson/RemedyApp
-
-## 🙏 Acknowledgments
-
-- Grand Circus Bootcamp
+- Grand Circus Bootcamp instructors and staff
+- Fellow bootcamp students
 - Open source community
-- All contributors and testers
-This README includes:
-Clear project description
-Detailed setup instructions
-Project structure
-Available scripts
-Tech stack details
-Contributing guidelines
-Contact information
-Emojis for better readability
-Acknowledgments section
+
+## Contact
+
+Kaycee
+Meek
+Durell Wilson - [durellwilsondetroit@gmail.com]
+Project Link: 
+[https://github.com/durellwilson/RemedyApp](https://github.com/durellwilson/RemedyApp)
+
