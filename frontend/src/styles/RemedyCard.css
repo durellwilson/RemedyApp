@@ -1,0 +1,149 @@
+.remedy-card {
+    width: 100%;
+    height: 500px;
+    perspective: 1000px;
+  }
+  
+  .card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+  }
+  
+  .card-inner.is-flipped {
+    transform: rotateY(180deg);
+  }
+  
+  .card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: 8px;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  
+  .card-front {
+    transform: rotateY(0deg);
+  }
+  
+  .card-back {
+    transform: rotateY(180deg);
+    overflow-y: auto;
+  }
+  
+  .remedy-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+  }
+  
+  .remedy-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .remedy-content {
+    padding: 20px;
+  }
+  
+  .remedy-content h3 {
+    margin: 0 0 10px 0;
+    color: #333;
+  }
+  
+  .ailment {
+    color: #666;
+    margin-bottom: 10px;
+  }
+  
+  .ratings {
+    display: flex;
+    justify-content: space-between;
+    color: #888;
+    font-size: 0.9em;
+    margin: 10px 0;
+  }
+  
+  .remedy-details {
+    text-align: left;
+  }
+  
+  .remedy-details h4 {
+    color: #444;
+    margin: 15px 0 10px;
+  }
+  
+  .remedy-details ul,
+  .remedy-details ol {
+    margin-left: 20px;
+    margin-bottom: 15px;
+  }
+  
+  .remedy-details li {
+    margin-bottom: 5px;
+    color: #666;
+    text-align: left;
+  }
+  
+  .source {
+    font-style: italic;
+    color: #888;
+    margin-top: 15px;
+  }
+  
+  .view-details-btn {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background 0.3s;
+    width: 100%;
+  }
+  
+  .view-details-btn:hover {
+    background: #45a049;
+  }
+
+  .edit-btn, .delete-btn, .save-btn, .cancel-btn {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s;
+    width: 100%;
+  }
+  
+  .edit-btn:hover, .save-btn:hover {
+    background: #45a049;
+  }
+  
+  .delete-btn {
+    background: #f44336;
+  }
+  
+  .delete-btn:hover {
+    background: #e53935;
+  }
+  
+  .cancel-btn {
+    background: #9e9e9e;
+  }
+  
+  .cancel-btn:hover {
+    background: #757575;
+  }
