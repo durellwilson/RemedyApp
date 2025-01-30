@@ -95,7 +95,7 @@ npm run dev
 
 # Start frontend (new terminal)
 cd frontend
-npm start
+npm run dev
 ```
 
 ## 🏗️ Project Structure
