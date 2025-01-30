@@ -2,18 +2,18 @@ import React, { useState, useEffect } from 'react';
 import RemedyCard from '../components/Remedies/RemedyCard';
 import SearchBar from '../components/Search/SearchBar';
 import FilterSort from '../components/Search/FilterSort';
-import { mockRemedies } from '../utils/mockData';
 import '../styles/Remedies.css';
 
 const Remedies = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [remedies] = useState(mockRemedies);
-  const [filteredRemedies, setFilteredRemedies] = useState(mockRemedies);
+  const [remedies, setRemedies] = useState([]);
+  const [filteredRemedies, setFilteredRemedies] = useState([]);
   const [activeFilters, setActiveFilters] = useState({
     effectiveness: '',
     budget: ''
   });
   const [sortOption, setSortOption] = useState('name-asc');
+  const [error, setError] = useState(null);
 
   const handleSort = (option) => {
     setSortOption(option);
@@ -33,6 +33,20 @@ const Remedies = () => {
   const handleSearch = (term) => {
     setSearchTerm(term);
   };
+
+  useEffect(() => {
+    const fetchRemedies = async () => {
+      try {
+        const response = await fetch('http://localhost:3000/api/remedies');
+        const data = await response.json();
+        setRemedies(data);
+      } catch (err) {
+        setError('Failed to fetch remedies');
+      }
+    };
+
+    fetchRemedies();
+  }, []);
 
   useEffect(() => {
     let updated = [...remedies];
@@ -100,6 +114,8 @@ const Remedies = () => {
         onFilterReset={handleFilterReset}
         sortOption={sortOption}
       />
+      
+      {error && <div className="error-message">{error}</div>}
       
       {filteredRemedies.length === 0 ? (
         <div className="no-results">

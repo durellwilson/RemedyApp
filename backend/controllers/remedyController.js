@@ -2,11 +2,20 @@ const Remedy = require('../models/remedy');
 
 exports.createRemedy = async (req, res) => {
   try {
-    const remedy = new Remedy(req.body);
-    await remedy.save();
-    res.status(201).json(remedy);
-  } catch (error) {
-    res.status(400).json({ message: error.message });
+    const newRemedy = new Remedy(req.body);
+    await newRemedy.save();
+    res.status(201).json(newRemedy);
+  } catch (err) {
+    res.status(400).json({ error: 'Failed to create remedy' });
+  }
+};
+
+exports.getAllRemedies = async (req, res) => {
+  try {
+    const remedies = await Remedy.find();
+    res.json(remedies);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to fetch remedies' });
   }
 };
 

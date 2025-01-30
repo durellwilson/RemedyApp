@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { mockRemedies } from '../../utils/mockData';
 import '../../styles/RemedyForm.css';
 
 const AddRemedyForm = () => {
@@ -73,15 +72,19 @@ const AddRemedyForm = () => {
     setError(null);
 
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      const newRemedy = {
-        ...formData,
-        _id: String(mockRemedies.length + 1),
-        created_date: new Date().toISOString()
-      };
-      
+      const response = await fetch('http://localhost:3000/api/remedies', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to create remedy');
+      }
+
+      const newRemedy = await response.json();
       console.log('New Remedy:', newRemedy);
       navigate('/remedies');
     } catch (err) {
