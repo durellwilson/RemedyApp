@@ -26,6 +26,12 @@ HerbaList is a final project developed during the Grand Circus Full Stack JavaSc
 - Vite
 - Axios
 
+### Backend
+* Node.js
+* Express
+* MongoDB with Mongoose
+* Firebase Admin SDK
+
 ### Backend API Endpoints
 - `GET /api/remedies` - Get all remedies
 - `POST /api/remedies` - Create new remedy
