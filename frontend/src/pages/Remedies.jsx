@@ -48,9 +48,16 @@ const Remedies = () => {
   const handleEdit = async (id, updatedData) => {
     try {
       const response = await api.updateRemedy(id, updatedData);
-      setRemedies(remedies.map(remedy => remedy._id === id ? response.data : remedy));
+      const updatedRemedy = response.data;
+        setRemedies(prevRemedies => 
+          prevRemedies.map(remedy => 
+            remedy._id === id ? updatedRemedy : remedy
+          )
+        );
+        return updatedRemedy;
     } catch (err) {
       setError('Failed to update remedy');
+      return null;
     }
   };
 
