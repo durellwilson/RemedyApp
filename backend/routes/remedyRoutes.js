@@ -8,10 +8,14 @@ const {
   deleteRemedy
 } = require('../controllers/remedyController');
 
-router.post('/', createRemedy);
-router.get('/', getRemedies);
-router.get('/:id', getRemedy);
-router.put('/:id', updateRemedy);
-router.delete('/:id', deleteRemedy);
+// Base path should be /api/remedies
+router.route('/')
+  .post(createRemedy)
+  .get(getRemedies);
+
+router.route('/:id')
+  .get(getRemedy)
+  .put(updateRemedy)
+  .delete(deleteRemedy);
 
 module.exports = router;

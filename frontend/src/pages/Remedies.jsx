@@ -39,7 +39,7 @@ const Remedies = () => {
   const handleDelete = async (id) => {
     try {
       await api.deleteRemedy(id);
-      setRemedies(remedies.filter(remedy => remedy._id !== id));
+      setRemedies(prev => prev.filter(remedy => remedy._id !== id));
     } catch (err) {
       setError('Failed to delete remedy');
     }
@@ -48,15 +48,15 @@ const Remedies = () => {
   const handleEdit = async (id, updatedData) => {
     try {
       const response = await api.updateRemedy(id, updatedData);
-      const updatedRemedy = response.data;
-        setRemedies(prevRemedies => 
-          prevRemedies.map(remedy => 
-            remedy._id === id ? updatedRemedy : remedy
-          )
-        );
-        return updatedRemedy;
+      if (!response) return null;
+      
+      setRemedies(prev => 
+        prev.map(remedy => 
+          remedy._id === id ? response : remedy
+        )
+      );
+      return response;
     } catch (err) {
-      setError('Failed to update remedy');
       return null;
     }
   };
@@ -65,9 +65,15 @@ const Remedies = () => {
     const fetchRemedies = async () => {
       try {
         const data = await api.getRemedies();
-        setRemedies(data);
+        // Validate that data exists and has the correct structure
+        if (Array.isArray(data) && data.every(remedy => remedy && remedy._id)) {
+          setRemedies(data);
+          setFilteredRemedies(data);
+        } else {
+          throw new Error('Invalid data structure received from API');
+        }
       } catch (err) {
-        setError(err.message);
+        setError('Failed to fetch remedies');
       } finally {
         setLoading(false);
       }
@@ -77,21 +83,18 @@ const Remedies = () => {
   }, []);
 
   useEffect(() => {
-    let updated = [...remedies];
+    if (!Array.isArray(remedies)) return;
+    
+    let updated = remedies.filter(remedy => remedy && remedy._id);
 
-    // Apply effectiveness filter
     if (activeFilters.effectiveness) {
-      updated = updated.filter(r =>
-        r.effectiveness_rating >= parseInt(activeFilters.effectiveness)
-      );
+      updated = updated.filter(r => r.effectiveness_rating >= parseInt(activeFilters.effectiveness));
     }
 
-    // Apply budget filter
     if (activeFilters.budget) {
       updated = updated.filter(r => r.budget_rating === activeFilters.budget);
     }
 
-    // Apply search filter
     if (searchTerm) {
       const termLower = searchTerm.toLowerCase();
       updated = updated.filter(r =>
@@ -101,7 +104,6 @@ const Remedies = () => {
       );
     }
 
-    // Sort the results
     const budgetValue = { '$': 1, '$$': 2, '$$$': 3 };
     switch (sortOption) {
       case 'name-asc':
@@ -146,20 +148,20 @@ const Remedies = () => {
         sortOption={sortOption}
       />
       
-      {filteredRemedies.length === 0 ? (
+      {!filteredRemedies || filteredRemedies.length === 0 ? (
         <div className="no-results">
           <p>No remedies found matching your criteria</p>
         </div>
       ) : (
         <div className="remedies-grid">
-          {filteredRemedies.map((remedy) => (
+          {filteredRemedies.map((remedy) => remedy && remedy._id ? (
             <RemedyCard 
-              key={remedy._id} 
-              remedy={remedy} 
-              onDelete={handleDelete} 
-              onEdit={handleEdit} 
+              key={remedy._id}
+              remedy={remedy}
+              onDelete={handleDelete}
+              onEdit={handleEdit}
             />
-          ))}
+          ) : null)}
         </div>
       )}
     </div>

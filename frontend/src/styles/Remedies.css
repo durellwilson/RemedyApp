@@ -1,24 +1,34 @@
 .remedies-container {
     padding: 20px;
-    max-width: 1200px;
+    max-width: 1100px;
     margin: 0 auto;
   }
   
   .remedies-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-    padding: 20px 0;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 40px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
   }
   
   .remedy-card {
+    width: 100%;
+    height: auto;
+    max-width: 500px;
+    min-width: max-content;
+    margin: 0;
+    perspective: 1000px;
     border: 1px solid #e0e0e0;
     border-radius: 8px;
     overflow: hidden;
     transition: transform 0.2s;
+    transform-style: preserve-3d;
     background: white;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   }
+
   
   .remedy-card:hover {
     transform: translateY(-5px);
@@ -26,7 +36,7 @@
   
   .remedy-image {
     width: 100%;
-    height: 200px;
+    height: 250px;
     overflow: hidden;
   }
   
@@ -37,7 +47,7 @@
   }
   
   .remedy-content {
-    padding: 15px;
+    padding: 20px;
   }
   
   .remedy-content h3 {
@@ -59,7 +69,13 @@
   
   @media (max-width: 768px) {
     .remedies-grid {
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjust for smaller screens */
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .remedies-grid {
+        grid-template-columns: 1fr; /* 1 column on very small screens */
     }
   }
   

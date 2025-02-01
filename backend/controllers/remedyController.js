@@ -1,30 +1,28 @@
 const Remedy = require('../models/remedy');
 
+const errorResponse = (error, res) => {
+  console.error("FAIL", error);
+  res.status(500).json({ message: "Internal Server Error" });
+};
+
 exports.createRemedy = async (req, res) => {
   try {
     const newRemedy = new Remedy(req.body);
-    await newRemedy.save();
-    res.status(201).json(newRemedy);
+    const savedRemedy = await newRemedy.save();
+    res.status(201).json(savedRemedy);
   } catch (err) {
-    res.status(400).json({ error: 'Failed to create remedy' });
-  }
-};
-
-exports.getAllRemedies = async (req, res) => {
-  try {
-    const remedies = await Remedy.find();
-    res.json(remedies);
-  } catch (err) {
-    res.status(500).json({ error: 'Failed to fetch remedies' });
+    errorResponse(err, res);
   }
 };
 
 exports.getRemedies = async (req, res) => {
   try {
-    const remedies = await Remedy.find();
-    res.json(remedies);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
+    const query = {};
+    // Add query filters if needed
+    const remedies = await Remedy.find(query);
+    res.status(200).json(remedies);
+  } catch (err) {
+    errorResponse(err, res);
   }
 };
 
@@ -34,9 +32,9 @@ exports.getRemedy = async (req, res) => {
     if (!remedy) {
       return res.status(404).json({ message: 'Remedy not found' });
     }
-    res.json(remedy);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(200).json(remedy);
+  } catch (err) {
+    errorResponse(err, res);
   }
 };
 
@@ -45,19 +43,25 @@ exports.updateRemedy = async (req, res) => {
     const remedy = await Remedy.findByIdAndUpdate(
       req.params.id,
       req.body,
-      { new: true }
+      { new: true, runValidators: true }
     );
-    res.json(remedy);
-  } catch (error) {
-    res.status(400).json({ message: error.message });
+    if (!remedy) {
+      return res.status(404).json({ message: 'Remedy not found' });
+    }
+    res.status(200).json(remedy);
+  } catch (err) {
+    errorResponse(err, res);
   }
 };
 
 exports.deleteRemedy = async (req, res) => {
   try {
-    await Remedy.findByIdAndDelete(req.params.id);
-    res.json({ message: 'Remedy deleted successfully' });
-  } catch (error) {
-    res.status(500).json({ message: error.message });
+    const result = await Remedy.findByIdAndDelete(req.params.id);
+    if (!result) {
+      return res.status(404).json({ message: 'Remedy not found' });
+    }
+    res.status(204).send();
+  } catch (err) {
+    errorResponse(err, res);
   }
 };
