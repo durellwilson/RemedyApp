@@ -8,6 +8,7 @@ import Remedies from './pages/Remedies';
 import AddRemedyForm from './components/Remedies/AddRemedyForm';
 import Login from './pages/Login';
 import PrivateRoute from './components/PrivateRoute';
+import RemedyDetail from './components/Remedies/RemedyDetail';
 import './styles/common.css';
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
                   </PrivateRoute>
                 } 
               />
+              <Route path="/remedies/:id" element={<RemedyDetail />} />
             </Routes>
           </main>
         </div>

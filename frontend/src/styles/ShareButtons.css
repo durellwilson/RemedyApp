@@ -1,0 +1,78 @@
+.share-buttons-container.share-overlay {
+  display: inline-block;
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+.share-icon {
+  width: 3em;
+  height: 3em;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.share-icon:hover {
+  background: rgba(255, 255, 255, 1);
+  transform: scale(1.15);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  animation: pulse 0.5s ease-out;
+}
+
+.share-dropdown-overlay {
+  position: absolute;
+  top: 0; 
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  padding: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  z-index: 10;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.dropdown-btn {
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.dropdown-btn:hover {
+  background: rgba(255, 255, 255, 1);
+  transform: translateY(-4px) rotate(2deg);
+}
+
+.share-dropdown > * {
+  cursor: pointer;
+}

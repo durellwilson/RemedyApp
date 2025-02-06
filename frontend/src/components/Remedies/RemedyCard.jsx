@@ -1,12 +1,19 @@
 import React, { useState } from 'react';
 import Modal from '../Modal/Modal';
+import ShareButtons from '../ShareButtons/ShareButtons';
 import '../../styles/RemedyCard.css';
+import { useAuth } from '../../contexts/AuthContext';
+
 
 const RemedyCard = ({ remedy, onDelete, onEdit }) => {
+    const { user } = useAuth();
     const [isFlipped, setIsFlipped] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
     const [editedData, setEditedData] = useState(remedy);
     const [localRemedy, setLocalRemedy] = useState(remedy);
+
+    // Construct a unique link for the remedy card.
+    const remedyLink = `${window.location.origin}/remedies/${localRemedy._id}`;
 
     const handleFlip = () => {
       setIsFlipped(!isFlipped);
@@ -112,13 +119,24 @@ const RemedyCard = ({ remedy, onDelete, onEdit }) => {
       <div className="remedy-card">
         <div className={`card-inner ${isFlipped ? 'is-flipped' : ''}`}>
           <div className="card-face card-front">
-            <div className="edit-icon" onClick={() => setIsEditing(true)}>
-              <svg viewBox="0 0 24 24" width="24" height="24">
-                <path fill="currentColor" d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
-              </svg>
-            </div>
-            <div className="remedy-image">
+            {user && (
+              <div className="edit-icon" onClick={() => setIsEditing(true)}>
+                <svg viewBox="0 0 24 24" width="24" height="24">
+                  <path fill="currentColor" d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+                </svg>
+              </div>
+            )}
+            <div className="remedy-image" style={{ position: 'relative' }}>
               <img src={localRemedy.image.url} alt={localRemedy.image.alt} />
+              <div className="share-icon-overlay">
+                <ShareButtons
+                  url={remedyLink}
+                  title="Check out this remedy"
+                  description="This remedy is helpful..."
+                  imageUrl={localRemedy.image.url}
+                  containerClass="share-overlay"
+                />
+              </div>
             </div>
             <div className="remedy-content">
               <h3>{localRemedy.name}</h3>
@@ -136,7 +154,23 @@ const RemedyCard = ({ remedy, onDelete, onEdit }) => {
           </div>
 
           <div className="card-face card-back">
-            <div className="remedy-content">
+            {user && (
+              <div className="edit-icon" onClick={() => setIsEditing(true)}>
+                <svg viewBox="0 0 24 24" width="24" height="24">
+                  <path fill="currentColor" d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+                </svg>
+              </div>
+            )}
+            <div className="remedy-content" style={{ position: 'relative' }}>
+              <div className="share-icon-overlay">
+                <ShareButtons
+                  url={remedyLink}
+                  title="Check out this remedy"
+                  description="This remedy is helpful..."
+                  imageUrl={localRemedy.image.url}
+                  containerClass="share-overlay"
+                />
+              </div>
               <h3>{localRemedy.name}</h3>
               <div className="remedy-details">
                 <h4>Ingredients:</h4>

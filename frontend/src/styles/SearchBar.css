@@ -59,7 +59,7 @@
     padding: 8px 32px 8px 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    width: 250px;
+    width: 100%;
   }
   
   .clear-button {
@@ -76,4 +76,11 @@
   
   .clear-button:hover {
     color: #333;
+  }
+
+  /* Media Queries for Mobile */
+  @media (max-width: 600px) {
+    .search-input {
+        padding: 10px;
+    }
   }

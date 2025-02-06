@@ -1,5 +1,5 @@
 .login-container {
-  max-width: 400px;
+  max-width: 90%; /* Allow more width on mobile */
   margin: 2rem auto;
   padding: 2rem;
   text-align: center;
@@ -25,4 +25,15 @@
 
 .google-signin-btn:hover {
   background-color: #357abd;
+}
+
+/* Media Queries for Mobile */
+@media (max-width: 600px) {
+  .login-container {
+    padding: 1.5rem; /* Reduce padding on mobile */
+  }
+
+  .google-signin-btn {
+    width: 100%; /* Make button full width on mobile */
+  }
 } 
