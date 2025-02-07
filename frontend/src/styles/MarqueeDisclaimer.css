@@ -1,0 +1,48 @@
+.marquee-disclaimer-container {
+    width: 100%;
+    overflow: hidden;
+    background: #fff; 
+    box-sizing: border-box;
+    padding: 10px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: none; 
+  }
+  
+  .marquee-disclaimer-link {
+    display: block;
+    color: #333;
+    text-decoration: none;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
+  }
+  
+  .marquee-disclaimer-content {
+    display: inline-block;
+    white-space: nowrap;
+    animation-name: marqueeScroll;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+  
+  .marquee-disclaimer-content span {
+    padding: 10px 30px; 
+    font-size: 20px; 
+    color: #666; 
+  }
+  
+  @keyframes marqueeScroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  
+  /* Optional styling for the disclaimer details content */
+  .disclaimer-details {
+    background: #fff;
+    padding: 20px;
+    border-top: 1px solid #ddd;
+    text-align: center;
+    font-family: sans-serif;
+  }

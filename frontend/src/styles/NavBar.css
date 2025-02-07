@@ -1,0 +1,32 @@
+.navbar {
+  background-color: #fafafa;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+}
+
+.navbar a {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 1.1rem;                
+  text-decoration: none;
+  color: #333;
+  margin: 0 15px;
+}
+
+.navbar a:hover {
+  filter: url(#soft-green-glow);
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .navbar a {
+    margin: 10px 0;
+  }
+} 

@@ -37,13 +37,17 @@ const SearchBar = ({ onSearch, data }) => {
 
   return (
     <div className="search-container">
-      <input
-        type="text"
-        value={inputValue}
-        onChange={handleChange}
-        placeholder="Search remedies..."
-        className="search-input"
-      />
+      <form>
+        <label htmlFor="search-field">Search:</label>
+        <input
+          type="text"
+          id="search-field"
+          value={inputValue}
+          onChange={handleChange}
+          placeholder="Search remedies..."
+          className="search-input"
+        />
+      </form>
       {inputValue && (
         <button onClick={handleClear} className="clear-button">
           ✕

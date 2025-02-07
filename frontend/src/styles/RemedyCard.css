@@ -63,7 +63,7 @@
 .remedy-content {
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    padding: 10px;
     flex-grow: 1;
     justify-content: space-between;
 }

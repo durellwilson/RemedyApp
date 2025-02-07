@@ -9,6 +9,8 @@ import AddRemedyForm from './components/Remedies/AddRemedyForm';
 import Login from './pages/Login';
 import PrivateRoute from './components/PrivateRoute';
 import RemedyDetail from './components/Remedies/RemedyDetail';
+import MarqueeDisclaimer from './components/MarqueeDisclaimer';
+import DarkMode from './components/DarkModeSlider'
 import './styles/common.css';
 
 function App() {
@@ -17,6 +19,7 @@ function App() {
       <Router>
         <div className="App">
           <Navbar />
+          <MarqueeDisclaimer />
           <main className="main-content">
             <Routes>
               <Route path="/" element={<Home />} />

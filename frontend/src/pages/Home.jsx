@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import HerbalLogo from '/herbalist.svg'
 
 const Home = () => {
   return (
@@ -14,6 +15,7 @@ const Home = () => {
           Share a Remedy
         </Link>
       </div>
+      <img src={HerbalLogo} alt="HerbaList" style={{ width: '100%', height: 'auto' }} /> {/* HerbalList Logo */}
     </div>
   );
 };

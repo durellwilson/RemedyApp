@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import RemedyCard from '../components/Remedies/RemedyCard';
 import SearchBar from '../components/Search/SearchBar';
 import FilterSort from '../components/Search/FilterSort';
@@ -16,6 +16,8 @@ const Remedies = () => {
   const [sortOption, setSortOption] = useState('name-asc');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  const gridRef = useRef(null);
 
   const handleSort = (option) => {
     setSortOption(option);
@@ -65,7 +67,6 @@ const Remedies = () => {
     const fetchRemedies = async () => {
       try {
         const data = await api.getRemedies();
-        // Validate that data exists and has the correct structure
         if (Array.isArray(data) && data.every(remedy => remedy && remedy._id)) {
           setRemedies(data);
           setFilteredRemedies(data);
@@ -88,7 +89,9 @@ const Remedies = () => {
     let updated = remedies.filter(remedy => remedy && remedy._id);
 
     if (activeFilters.effectiveness) {
-      updated = updated.filter(r => r.effectiveness_rating >= parseInt(activeFilters.effectiveness));
+      updated = updated.filter(r =>
+        r.effectiveness_rating >= parseInt(activeFilters.effectiveness)
+      );
     }
 
     if (activeFilters.budget) {
@@ -131,6 +134,12 @@ const Remedies = () => {
     setFilteredRemedies(updated);
   }, [remedies, activeFilters, searchTerm, sortOption]);
 
+  useEffect(() => {
+    if (searchTerm && gridRef.current) {
+      gridRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [searchTerm]);
+
   if (loading) return <div className="loading">Loading...</div>;
   if (error) return <div className="error-message">{error}</div>;
 
@@ -153,7 +162,7 @@ const Remedies = () => {
           <p>No remedies found matching your criteria</p>
         </div>
       ) : (
-        <div className="remedies-grid">
+        <div className="remedies-grid" ref={gridRef}>
           {filteredRemedies.map((remedy) => remedy && remedy._id ? (
             <RemedyCard 
               key={remedy._id}
