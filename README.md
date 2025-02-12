@@ -1,7 +1,4 @@
 # HerbaList
-<a href="https://herbalist.web.app">
-  <img align="center" width="200" src="https://herbalist.web.app/herbalist.svg" />
-</a>
 [https://herbalist.web.app](https://herbalist.web.app)
 
 
