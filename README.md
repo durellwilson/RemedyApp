@@ -1,4 +1,9 @@
 # HerbaList
+<a href="https://herbalist.web.app">
+  <img align="center" width="200" src="https://herbalist.web.app/herbalist.svg" />
+</a>
+[https://herbalist.web.app](https://herbalist.web.app)
+
 
 HerbaList is a final project developed during the Grand Circus Full Stack JavaScript Bootcamp (January-February 2025), designed to help users discover and share traditional herbal remedies. Built with the MERN stack, this application demonstrates proficiency in modern web development practices while providing a practical solution for accessing herbal remedy information.
 
@@ -150,6 +155,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 Kaycee
 Meek
 Durell Wilson - [durellwilsondetroit@gmail.com]
-Project Link: 
+
+Project Links: 
 [https://github.com/durellwilson/RemedyApp](https://github.com/durellwilson/RemedyApp)
 
+[https://herbalist.web.app](https://herbalist.web.app)
