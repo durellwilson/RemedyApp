@@ -37,3 +37,12 @@ yarn-error.log*
 firebase-debug.log*
 firebase-debug.*.log*
 .firebase/ 
+
+
+# More files
+*.json
+*.log
+ui-debug.log
+**/node_modules
+herbalist-c86ef-firebase-adminsdk-fbsvc-537cd48d5f.json
+**/herbalist-c86ef-firebase-adminsdk-fbsvc-537cd48d5f.json
